@@ -7,7 +7,7 @@ RSpec.describe Ball, type: :model do
   describe 'Testes de preenchimento do model Ball' do
 
     it 'name consegue ser preenchido?' do
-      @ball.name = ''
+      @ball.name = 'bola de volei'
       expect(@ball.name).to eq('bola de volei')
     end
 
