@@ -1,6 +1,6 @@
 class Api::V1::BallsController < ApplicationController
 
-  before_action :set_ball, only: %i[show] # show, update destroy
+  before_action :set_ball, only: %i[show update] # show, update destroy
 
   def index
     @balls = Ball.all 
@@ -15,6 +15,14 @@ class Api::V1::BallsController < ApplicationController
     @ball = Ball.new(ball_params)
     if @ball.save
       render json: @ball, status: :created, location: api_v1_ball_url(@ball)
+    else
+      render json: @ball.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @ball.update(ball_params)
+      render json: @ball
     else
       render json: @ball.errors, status: :unprocessable_entity
     end
