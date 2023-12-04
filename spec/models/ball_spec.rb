@@ -26,6 +26,11 @@ RSpec.describe Ball, type: :model do
       expect(@ball).to be_valid
     end
 
+    it 'Ball invalido com campos obrigatorios não preenchidos?' do
+      ball = Ball.new
+      expect(ball).to be_valid
+    end
+
   end
 
 end
