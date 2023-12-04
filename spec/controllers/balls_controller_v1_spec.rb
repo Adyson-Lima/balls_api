@@ -12,4 +12,12 @@ RSpec.describe Api::V1::BallsController, type: :controller do
     end
   end
 
+  describe 'GET /api/v1/balls/id' do
+    it 'Consegue listar um ball especifico e reornar status 200?' do
+      get :show, params: {id: @ball.id}
+      expect(response.body).to include_json(id: @ball.id)
+      expect(response).to have_http_status(200)
+    end    
+  end
+
 end
