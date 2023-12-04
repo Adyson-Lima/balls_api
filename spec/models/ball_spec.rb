@@ -11,6 +11,11 @@ RSpec.describe Ball, type: :model do
       expect(@ball.name).to eq('bola de volei')
     end
 
+    it 'game consegue ser preenchido?' do
+      @ball.game = ''
+      expect(@ball.game).to eq('volei')
+    end
+
   end
 
 end
