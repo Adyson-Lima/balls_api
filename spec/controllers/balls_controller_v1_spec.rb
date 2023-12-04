@@ -28,4 +28,13 @@ RSpec.describe Api::V1::BallsController, type: :controller do
     end
   end
 
+  describe 'PATCH /api/v1/balls/id' do
+    it 'Consegue atualizar um ball e retornar status 200?' do
+      ball = Ball.last
+      patch :update, params: {ball: {name: 'bola de baseball', game: 'baseball'},id: ball.id}
+      expect(response.body).to include_json(name: 'bola de baseball')
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end
