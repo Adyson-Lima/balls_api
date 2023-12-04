@@ -1,6 +1,6 @@
 class Api::V1::BallsController < ApplicationController
 
-  before_action :set_ball, only: %i[show update] # show, update destroy
+  before_action :set_ball, only: %i[show update destroy] # show, update destroy
 
   def index
     @balls = Ball.all 
@@ -26,6 +26,10 @@ class Api::V1::BallsController < ApplicationController
     else
       render json: @ball.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @ball.destroy!
   end
 
 private

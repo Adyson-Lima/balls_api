@@ -41,7 +41,7 @@ RSpec.describe Api::V1::BallsController, type: :controller do
     it 'Consegue excluir um ball e retornar status 204?' do
       ball = Ball.last
       delete :destroy, params: {id: ball.id}
-      expect(Ball.all).not_to include_json(ball)
+      expect(Ball.all).not_to include(ball)
       expect(response).to have_http_status(204)
     end
   end
