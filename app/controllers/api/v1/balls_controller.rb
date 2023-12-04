@@ -11,6 +11,15 @@ class Api::V1::BallsController < ApplicationController
     render json: @ball
   end
 
+  def create
+    @ball = Ball.new(ball_params)
+    if @ball.save
+      render json: @ball, status: :created, location: api_v1_ball_url(@ball)
+    else
+      render json: @ball.errors, status: :unprocessable_entity
+    end
+  end
+
 private
 
 def set_ball
