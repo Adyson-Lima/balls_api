@@ -21,8 +21,8 @@ RSpec.describe Ball, type: :model do
   describe 'Testes de validação do model Ball' do
 
     it 'Ball valido com campos obrigatorios preenchidos?' do
-      @ball.name = ''
-      @ball.game = ''
+      @ball.name = 'bola de futsal'
+      @ball.game = 'futsal'
       expect(@ball).to be_valid
     end
 
