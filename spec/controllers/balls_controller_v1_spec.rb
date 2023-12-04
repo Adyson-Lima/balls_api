@@ -20,4 +20,12 @@ RSpec.describe Api::V1::BallsController, type: :controller do
     end    
   end
 
+  describe 'POST /api/v1/balls' do
+    it 'Consegue criar um ball e retornar status 201?' do
+      post :create, params: {ball: {name: 'bola de basket', game: 'basket'},format: :json}
+      expect(response.body).to include_json(name: 'bola de basket')
+      expect(response).to have_http_status(201)
+    end
+  end
+
 end
