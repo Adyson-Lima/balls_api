@@ -1,10 +1,14 @@
 class Api::V1::BallsController < ApplicationController
 
-  #before_action :set_ball, only: %i[] # show, update destroy
+  before_action :set_ball, only: %i[show] # show, update destroy
 
   def index
     @balls = Ball.all 
     render json: @balls
+  end
+
+  def show
+    render json: @ball
   end
 
 private
